@@ -16,3 +16,10 @@ code {
   margin: 0;
   padding: 0;
 }
+
+.header {
+  background: #162d50;
+background-size: cover;
+padding-top: 10em;
+background-attachment: fixed;
+}
