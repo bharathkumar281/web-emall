@@ -26,7 +26,7 @@ function App(){
         </NavDropdown>
       </Nav>
       <Nav>
-        <Nav.Link href="/Login">Sign inn</Nav.Link>
+        <Nav.Link href="/Login">Sign in</Nav.Link>
         <Nav.Link eventKey={2} href="/Registration">Register</Nav.Link>
       </Nav>
   </Navbar.Collapse>
