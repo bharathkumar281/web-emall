@@ -20,16 +20,16 @@ const Header = (props) => {
     if (props.register) buttons.push(<LinkButton key="3" link="/register" text="Sign up" />)
 
     return (
-        <div className="jumbotron jumbotron-fluid header" style={
+        <div className="jumbotron jumbotron-fluid header pb-3 pt-3" style={
             {
                 background: `url(${images.mall}) no-repeat`,
                 backgroundSize: 'cover',
                 backgroundAttachment: "fixed"
             }}>
-            <div className="container text-white pt-1 pb-1">
-                <h3 className="display-2">eMall</h3>
-                <p className="lead pt-3"></p>
-                <div className="row d-flex justify-content-left pt-3">
+            <div className="container text-white">
+                <h3 className="display-2">{props.title}</h3>
+                <p className="lead">{props.subtitle}</p>
+                <div className="row d-flex justify-content-left">
                     {buttons}
                 </div>
             </div>

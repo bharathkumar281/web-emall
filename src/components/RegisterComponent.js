@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Header from "./HeaderComponent";
 
 export default class Register extends Component {
@@ -21,35 +21,34 @@ export default class Register extends Component {
 
     render() {
         return (
-            <div>
-                <Header home login />
+            <div className="Register pb-5">
+                <Header home login title="Register" subtitle="as Administrator" />
                 <Container>
-                    <Row className="justify-content-center">
+                    <Row>
                         <Col xs="12" md="8" lg="6">
-                            <Card>
-                                <Card.Header className="bg-dark text-white">
-                                    <Card.Title>Sign in as Administrator</Card.Title>
-                                </Card.Header>
-                                <Card.Body>
-                                    <Form onSubmit={(event) => this.handleSubmit(event)} model="feedback">
-                                        <Form.Group controlId="formEmail">
-                                            <Form.Label>Email Address:</Form.Label>
-                                            <Form.Control name="email" type="email" placeholder="example@email.com"></Form.Control>
-                                        </Form.Group>
+                            <Form onSubmit={(event) => this.handleSubmit(event)} model="feedback">
 
-                                        <Form.Group controlId="formPassword">
-                                            <Form.Label>Password:</Form.Label>
-                                            <Form.Control name="password" type="Password" placeholder="Password"></Form.Control>
-                                        </Form.Group>
+                                <Form.Group controlId="formUsername">
+                                    <Form.Label>Username:</Form.Label>
+                                    <Form.Control name="username" type="text" placeholder="Username"></Form.Control>
+                                </Form.Group>
 
-                                        <Form.Group controlId="conPassword">
-                                            <Form.Label>Confirm Password:</Form.Label>
-                                            <Form.Control type="Password" placeholder="Password"></Form.Control>
-                                        </Form.Group>
-                                        <Button type="submit" variant="dark">Register</Button>
-                                    </Form>
-                                </Card.Body>
-                            </Card>
+                                <Form.Group controlId="formEmail">
+                                    <Form.Label>Email Address:</Form.Label>
+                                    <Form.Control name="email" type="email" placeholder="example@email.com"></Form.Control>
+                                </Form.Group>
+
+                                <Form.Group controlId="formPassword">
+                                    <Form.Label>Password:</Form.Label>
+                                    <Form.Control name="password" type="Password" placeholder="Password"></Form.Control>
+                                </Form.Group>
+
+                                <Form.Group controlId="conPassword">
+                                    <Form.Label>Confirm Password:</Form.Label>
+                                    <Form.Control type="Password" placeholder="Password"></Form.Control>
+                                </Form.Group>
+                                <Button type="submit" variant="dark" style={{background: '#162d50'}}>Register</Button>
+                            </Form>
                         </Col>
                     </Row>
                 </Container>

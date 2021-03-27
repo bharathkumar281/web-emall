@@ -3,7 +3,9 @@ import Header from "./HeaderComponent";
 
 const Home = () => {
     return (
-        <Header login register/>
+        <div className="Home">
+            <Header login register title="eMall"/>
+        </div>
     );
 }
 
