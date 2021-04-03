@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {api} from '../../constants/urls';
+import { api } from '../../constants/urls';
 
 class FloorService {
 
@@ -13,8 +13,8 @@ class FloorService {
         return this.service.get('/all');
     }
 
-    addFloor(user, id) {
-        return this.service.post('/add?id='+id, user);
+    addFloor(floor, mallId) {
+        return this.service.post('/add?id=' + mallId, floor);
     }
 
 }

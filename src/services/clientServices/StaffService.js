@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {api} from '../../constants/urls';
+import { api } from '../../constants/urls';
 
 class StaffService {
 
@@ -13,8 +13,8 @@ class StaffService {
         return this.service.get('/all');
     }
 
-    addStaff(user) {
-        return this.service.post('/add', user);
+    addStaff(staff) {
+        return this.service.post('/add', staff);
     }
 
 }

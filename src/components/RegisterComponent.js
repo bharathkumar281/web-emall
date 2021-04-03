@@ -1,53 +1,102 @@
 import React, { Component } from "react";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
+import { colors } from "../constants/theme";
 import Header from "./HeaderComponent";
+import AdminService from "../services/managementServices/AdminService";
+import { withRouter } from "react-router";
 
-export default class Register extends Component {
+class Register extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            isLoading: false
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        let elements = event.target.elements;
-        let user = {
-            email: elements.email.value,
-            password: elements.password.value
-        };
-        console.log(user);
+        const elements = event.target.elements;
+        if (elements.password.value !== elements.cpassword.value) {
+            this.setState({ errorMessage: 'Password and Confirm password do not match !' })
+        }
+        else {
+            this.setState({ errorMessage: null, isLoading: true });
+            const user = {
+                username: elements.username.value,
+                email: elements.email.value,
+                password: elements.password.value
+            }
+            console.log(user);
+            AdminService.addAdmin(user)
+                .then(response => {
+                    console.log(response);
+                    alert('registered successfully !');
+                    this.props.history.push('/login');
+                })
+                .catch(error => this.setState({ errorMessage: error.message, isLoading: false }));
+        }
     }
 
     render() {
+        const errorMsg = this.state.errorMessage;
         return (
             <div className="Register pb-5">
                 <Header home login title="Register" subtitle="as Administrator" />
                 <Container>
                     <Row>
                         <Col xs="12" md="8" lg="6">
-                            <Form onSubmit={(event) => this.handleSubmit(event)} model="feedback">
+                            <Alert style={{ background: colors.dark, color: colors.light }}
+                                variant="danger" dismissible onClose={() => { this.setState({ errorMessage: null }) }}
+                                className={errorMsg ? '' : 'd-none'}>{errorMsg}</Alert>
+                            <Form onSubmit={(event) => this.handleSubmit(event)}>
 
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username:</Form.Label>
-                                    <Form.Control name="username" type="text" placeholder="Username"></Form.Control>
+                                    <Form.Control required
+                                        className="add-shadow-small"
+                                        name="username"
+                                        type="text"
+                                        placeholder="Username"
+                                        minLength="3"
+                                        maxLength="15" />
                                 </Form.Group>
 
                                 <Form.Group controlId="formEmail">
                                     <Form.Label>Email Address:</Form.Label>
-                                    <Form.Control name="email" type="email" placeholder="example@email.com"></Form.Control>
+                                    <Form.Control required
+                                        className="add-shadow-small"
+                                        name="email"
+                                        type="email"
+                                        placeholder="example@email.com"
+                                        minLength="3"
+                                        maxLength="30" />
                                 </Form.Group>
 
                                 <Form.Group controlId="formPassword">
                                     <Form.Label>Password:</Form.Label>
-                                    <Form.Control name="password" type="Password" placeholder="Password"></Form.Control>
+                                    <Form.Control required
+                                        className="add-shadow-small"
+                                        name="password"
+                                        type="Password"
+                                        placeholder="Password"
+                                        minLength="4"
+                                        maxLength="12" />
                                 </Form.Group>
 
                                 <Form.Group controlId="conPassword">
                                     <Form.Label>Confirm Password:</Form.Label>
-                                    <Form.Control type="Password" placeholder="Password"></Form.Control>
+                                    <Form.Control required
+                                        className="add-shadow-small"
+                                        name="cpassword"
+                                        type="Password"
+                                        placeholder="Password"
+                                        minLength="4"
+                                        maxLength="12" />
                                 </Form.Group>
-                                <Button type="submit" variant="dark" style={{background: '#162d50'}}>Register</Button>
+                                <Button type="submit" className="add-shadow-small mr-3" variant="dark" style={{ background: colors.dark }}>Register</Button>
+                                <Spinner className={this.state.isLoading ? '' : 'd-none'} animation="border" variant="primary" size="sm" />
                             </Form>
                         </Col>
                     </Row>
@@ -56,3 +105,5 @@ export default class Register extends Component {
         );
     }
 }
+
+export default withRouter(Register);

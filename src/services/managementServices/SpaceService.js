@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {api} from '../../constants/urls';
+import { api } from '../../constants/urls';
 
 class SpaceService {
 
@@ -13,8 +13,8 @@ class SpaceService {
         return this.service.get('/all');
     }
 
-    addSpace(user,id) {
-        return this.service.post('/add?id='+id, user);
+    addSpace(space, floorId) {
+        return this.service.post('/add?id=' + floorId, space);
     }
 
 }

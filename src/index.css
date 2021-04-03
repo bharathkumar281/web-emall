@@ -12,7 +12,35 @@ code {
     monospace;
 } */
 
-*{
+* {
   margin: 0;
   padding: 0;
+}
+
+.bg-blue {
+  background: #162d50;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.add-shadow {
+  -webkit-box-shadow: 5px 5px 20px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 5px 20px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 5px 5px 20px -4px rgba(0, 0, 0, 0.75);
+}
+
+.add-shadow-small {
+  -webkit-box-shadow: 3px 3px 10px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 10px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 10px -4px rgba(0, 0, 0, 0.75);
+}
+
+.Navbar {
+  height: 60px;
+}
+
+.Main {
+  min-height: 100vh;
 }

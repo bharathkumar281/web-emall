@@ -1,5 +1,6 @@
 export const images = {
-    mall: '/assets/images/mall.jpg'
+    mall: '/assets/images/mall.jpg',
+    profile: '/assets/images/profile.svg'
 }
 
 export const api = {
