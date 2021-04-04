@@ -17,6 +17,14 @@ class AdminService {
         return this.service.post('/add', admin);
     }
 
+    getAdmin(id) {
+        return this.service.get('/get?id=' + id);
+    }
+
+    login(user) {
+        return this.service.post('/login', user);
+    }
+
 }
 
 export default new AdminService();

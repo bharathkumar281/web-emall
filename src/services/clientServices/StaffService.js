@@ -17,6 +17,10 @@ class StaffService {
         return this.service.post('/add', staff);
     }
 
+    login(staff) {
+        return this.service.post('/login', staff);
+    }
+
 }
 
 export default new StaffService();

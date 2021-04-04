@@ -45,7 +45,7 @@ class StaffMain extends React.Component {
                     <SideNav on={this.state.on} links={links} />
                     <Switch>
                         <Route path="/staff/home" component={() => <StaffHome user={this.state.user} />} />
-                        <Route path="/staff/bookings" component={StaffBooking} />
+                        <Route path="/staff/bookings" component={() => <StaffBooking user={this.state.user} />} />
                         <Redirect to="/staff/home" />
                     </Switch>
                 </div>

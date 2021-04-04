@@ -31,9 +31,13 @@ class Register extends Component {
             console.log(user);
             AdminService.addAdmin(user)
                 .then(response => {
-                    console.log(response);
-                    alert('registered successfully !');
-                    this.props.history.push('/login');
+                    if (response.data === '') {
+                        this.setState({ errorMessage: 'user already exists !', isLoading: false });
+                    }
+                    else {
+                        alert('registed successfully !');
+                        this.props.history.push('/login');
+                    }
                 })
                 .catch(error => this.setState({ errorMessage: error.message, isLoading: false }));
         }

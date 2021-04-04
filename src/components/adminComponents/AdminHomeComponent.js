@@ -1,4 +1,5 @@
 import React from "react";
+import { images } from "../../constants/urls";
 import Profile from "../ProfileComponent";
 
 class AdminHome extends React.Component {
@@ -7,6 +8,10 @@ class AdminHome extends React.Component {
 
         const fields = [
             {
+                key: 'Name',
+                val: this.props.user.username
+            },
+            {
                 key: 'Email',
                 val: this.props.user.email
             }
@@ -14,7 +19,7 @@ class AdminHome extends React.Component {
 
         return (
             <>
-                <Profile fields={fields} />
+                <Profile fields={fields} title="Admin Profile" img={images.profile} />
             </>
         );
     }

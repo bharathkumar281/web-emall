@@ -3,6 +3,8 @@ import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstr
 import Header from "./HeaderComponent";
 import { withRouter } from "react-router-dom";
 import { colors } from "../constants/theme";
+import AdminService from "../services/managementServices/AdminService";
+import StaffService from "../services/clientServices/StaffService";
 // import StaffService from "../services/clientServices/StaffService";
 // import AdminService from "../services/managementServices/AdminService";
 
@@ -18,6 +20,7 @@ class Login extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        this.setState({ isLoading: true });
         let elements = event.target.elements;
         let user = {
             email: elements.email.value,
@@ -25,13 +28,39 @@ class Login extends React.Component {
         };
 
         if (elements.isAdmin.checked) {
-            sessionStorage.setItem('admin', JSON.stringify(user));
-            this.props.history.push('/admin');
+            AdminService.login(user)
+                .then(response => response.data)
+                .then(admin => {
+                    if (admin === '') this.setState({ isLoading: false, errorMessage: 'Invalid credentials !' });
+                    else {
+                        console.log(admin);
+                        this.setState({ isLoading: false });
+                        sessionStorage.setItem('admin', JSON.stringify(admin));
+                        this.props.history.push('/admin');
+                    }
+                })
+                .catch(error => this.setState({
+                    isLoading: false,
+                    errorMessage: error.message
+                }))
         }
 
         else {
-            sessionStorage.setItem('user', JSON.stringify(user));
-            this.props.history.push('/staff');
+            StaffService.login(user)
+                .then(response => response.data)
+                .then(staff => {
+                    if (staff === '') this.setState({ isLoading: false, errorMessage: 'Invalid credentials !' });
+                    else {
+                        console.log(staff);
+                        this.setState({ isLoading: false });
+                        sessionStorage.setItem('user', JSON.stringify(staff));
+                        this.props.history.push('/staff');
+                    }
+                })
+                .catch(error => this.setState({
+                    isLoading: false,
+                    errorMessage: error.message
+                }))
         }
     }
 
@@ -43,7 +72,9 @@ class Login extends React.Component {
                 <Container>
                     <Row>
                         <Col xs="12" md="8" lg="6">
-                            <Alert variant="danger" className={errorMsg ? '' : 'd-none'}>{errorMsg}</Alert>
+                            <Alert dismissible variant="danger" onClose={() => { this.setState({ errorMessage: null }) }}
+                                style={{ background: colors.dark }}
+                                className={errorMsg ? 'text-white' : 'd-none'}>{errorMsg}</Alert>
                             <Form onSubmit={(event) => this.handleSubmit(event)} >
                                 <Form.Group controlId="formEmail">
                                     <Form.Label>Email Address:</Form.Label>
@@ -73,7 +104,7 @@ class Login extends React.Component {
                                         label="login as Administrator"
                                         name="isAdmin" />
                                 </Form.Group>
-                                <Button className="add-shadow-small"
+                                <Button className="add-shadow-small mr-3"
                                     type="submit" variant="dark"
                                     style={{ background: colors.dark }}>Login</Button>
                                 <Spinner className={this.state.isLoading ? '' : 'd-none'}
