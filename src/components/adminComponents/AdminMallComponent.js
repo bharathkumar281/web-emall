@@ -2,6 +2,7 @@ import React from "react";
 import Profile from "../ProfileComponent";
 import AddMall from "./AddMallComponent";
 import { images } from "../../constants/urls";
+import MallLayout from "./MallLayoutComponent";
 
 class AdminMall extends React.Component {
 
@@ -11,22 +12,17 @@ class AdminMall extends React.Component {
             return (<AddMall user={this.props.user} refresh={this.props.refresh} />)
         }
         else {
-            const fields = [
-                {
-                    key: 'Name',
-                    val: mall.name
-                },
-                {
-                    key: 'Branch',
-                    val: mall.branch
-                },
-                {
-                    key: 'Cost per space',
-                    val: mall.spaceCost
-                }
-            ];
+            const fields = {
+                'Name': mall.name,
+                'Branch': mall.branch,
+                'Cost per Space': 'Rs ' + mall.spaceCost,
+                'No of floors': mall.floors.length
+            };
             return (
-                <Profile fields={fields} title="Mall Info" img={images.mallProfile} />
+                <div className="w-100 d-flex flex-column">
+                    <Profile fields={fields} title="Mall Info" img={images.mallProfile} />
+                    <MallLayout mall={mall} refresh={this.props.refresh} />
+                </div>
             );
         }
     }

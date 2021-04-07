@@ -6,16 +6,13 @@ class AdminHome extends React.Component {
 
     render() {
 
-        const fields = [
-            {
-                key: 'Name',
-                val: this.props.user.username
-            },
-            {
-                key: 'Email',
-                val: this.props.user.email
-            }
-        ];
+        const user = this.props.user;
+
+        const fields = {
+            'Name': user.username,
+            'Email': user.email,
+            'Mall': user.mall ? user.mall.name + ', ' + user.mall.branch : 'Not Added'
+        }
 
         return (
             <>

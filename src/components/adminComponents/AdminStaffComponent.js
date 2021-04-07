@@ -2,18 +2,9 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import AddStaff from "./AddStaffComponent";
+import StaffData from "./StaffDataComponent";
 
 class AdminStaff extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { isLoading: false, errorMsg: null };
-        this.addStaff = this.addStaff.bind(this);
-    }
-
-    addStaff = (event) => {
-
-    }
 
     render() {
         const mall = this.props.user.mall;
@@ -25,9 +16,14 @@ class AdminStaff extends React.Component {
                 </Container>
             );
         }
-        else return (
-            <AddStaff mall={mall} />
-        );
+        else {
+            return (
+                <div className="w-100 d-flex flex-column">
+                    <AddStaff mall={mall} />
+                    <StaffData mallId={mall.mallId} />
+                </div>
+            );
+        }
     }
 }
 

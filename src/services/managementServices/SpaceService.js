@@ -13,8 +13,8 @@ class SpaceService {
         return this.service.get('/all');
     }
 
-    addSpace(space, floorId) {
-        return this.service.post('/add?id=' + floorId, space);
+    addSpace(floorId) {
+        return this.service.post('/add?id=' + floorId);
     }
 
 }

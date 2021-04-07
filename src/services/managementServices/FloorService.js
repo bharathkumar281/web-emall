@@ -13,8 +13,8 @@ class FloorService {
         return this.service.get('/all');
     }
 
-    addFloor(floor, mallId) {
-        return this.service.post('/add?id=' + mallId, floor);
+    addFloor(mallId) {
+        return this.service.post('/add?id=' + mallId);
     }
 
 }

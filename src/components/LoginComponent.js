@@ -1,12 +1,11 @@
 import React from "react";
-import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
+import { Form, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
 import Header from "./HeaderComponent";
 import { withRouter } from "react-router-dom";
 import { colors } from "../constants/theme";
 import AdminService from "../services/managementServices/AdminService";
 import StaffService from "../services/clientServices/StaffService";
-// import StaffService from "../services/clientServices/StaffService";
-// import AdminService from "../services/managementServices/AdminService";
+import { Button } from "./CustomComponents";
 
 class Login extends React.Component {
 
@@ -105,8 +104,7 @@ class Login extends React.Component {
                                         name="isAdmin" />
                                 </Form.Group>
                                 <Button className="add-shadow-small mr-3"
-                                    type="submit" variant="dark"
-                                    style={{ background: colors.dark }}>Login</Button>
+                                    type="submit" variant="dark">Login</Button>
                                 <Spinner className={this.state.isLoading ? '' : 'd-none'}
                                     animation="border" variant="primary" size="sm" />
                             </Form>

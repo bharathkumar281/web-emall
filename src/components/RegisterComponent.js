@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Form, Button, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
+import { Form, Container, Row, Col, Alert, Spinner } from "react-bootstrap";
 import { colors } from "../constants/theme";
 import Header from "./HeaderComponent";
 import AdminService from "../services/managementServices/AdminService";
 import { withRouter } from "react-router";
+import { Button } from "./CustomComponents";
 
 class Register extends Component {
 
@@ -31,13 +32,11 @@ class Register extends Component {
             console.log(user);
             AdminService.addAdmin(user)
                 .then(response => {
+                    let msg = 'User Registered successfully !';
                     if (response.data === '') {
-                        this.setState({ errorMessage: 'user already exists !', isLoading: false });
+                        msg = 'User already registered !';
                     }
-                    else {
-                        alert('registed successfully !');
-                        this.props.history.push('/login');
-                    }
+                    this.setState({ errorMessage: msg, isLoading: false });
                 })
                 .catch(error => this.setState({ errorMessage: error.message, isLoading: false }));
         }
@@ -99,7 +98,7 @@ class Register extends Component {
                                         minLength="4"
                                         maxLength="12" />
                                 </Form.Group>
-                                <Button type="submit" className="add-shadow-small mr-3" variant="dark" style={{ background: colors.dark }}>Register</Button>
+                                <Button type="submit" className="add-shadow-small mr-3" variant="dark">Register</Button>
                                 <Spinner className={this.state.isLoading ? '' : 'd-none'} animation="border" variant="primary" size="sm" />
                             </Form>
                         </Col>

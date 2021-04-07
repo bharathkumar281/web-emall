@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Form, Row, Col, Button, Spinner, Alert } from "react-bootstrap";
+import { Container, Form, Row, Col, Spinner, Alert } from "react-bootstrap";
 import { colors } from "../../constants/theme";
 import MallService from "../../services/managementServices/MallService";
+import { Button } from "../CustomComponents";
 
 class AddMall extends React.Component {
 
@@ -70,7 +71,7 @@ class AddMall extends React.Component {
                                     type="number" min={100} max={5000} placeholder="cost per day" />
                             </Form.Group>
                             <Button type="submit" className="add-shadow-small mr-3"
-                                variant="dark" style={{ background: colors.dark }}>Add</Button>
+                                variant="dark">Add</Button>
                             <Spinner className={this.state.isLoading ? '' : 'd-none'}
                                 animation="border" variant="primary" size="sm" />
                         </Form>

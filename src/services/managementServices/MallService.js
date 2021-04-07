@@ -17,6 +17,10 @@ class MallService {
         return this.service.post('/add?id=' + adminId, mall);
     }
 
+    get(mallId) {
+        return this.service.get('/get?id=' + mallId);
+    }
+
 }
 
 export default new MallService();

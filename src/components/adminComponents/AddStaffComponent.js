@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Form, Row, Col, Button, Spinner, Alert } from "react-bootstrap";
+import { Container, Form, Row, Col, Spinner, Alert } from "react-bootstrap";
 import { colors } from "../../constants/theme";
 import StaffService from "../../services/clientServices/StaffService";
+import { Button } from "../CustomComponents";
 
 class AddStaff extends React.Component {
 
@@ -66,7 +67,7 @@ class AddStaff extends React.Component {
                                     type="email" minLength="6" placeholder="example@email.com" />
                             </Form.Group>
                             <Button type="submit" className="add-shadow-small mr-3"
-                                variant="dark" style={{ background: colors.dark }}>Add</Button>
+                                variant="dark">Add</Button>
                             <Spinner className={this.state.isLoading ? '' : 'd-none'}
                                 animation="border" variant="primary" size="sm" />
                         </Form>

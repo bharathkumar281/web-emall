@@ -1,7 +1,9 @@
 import React from 'react';
 import { Navbar } from "react-bootstrap";
 import { colors } from '../constants/theme';
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { FaShoppingCart } from 'react-icons/fa';
+import { Button } from './CustomComponents';
 
 class TopNav extends React.Component {
 
@@ -19,10 +21,17 @@ class TopNav extends React.Component {
 
     render() {
         return (
-            <Navbar variant="dark" style={{ background: colors.dark }} className='Navbar add-shadow text-white'>
-                <span className="fa fa-lg fa-bars" onClick={this.props.toggleNav}></span>
-                <span className='mr-auto'></span>
-                <span className='fa fa-lg fa-sign-out' onClick={this.logout}></span>
+            <Navbar variant="dark" style={{ background: colors.dark }} className='Navbar add-shadow text-white' sticky="top">
+                <Button variant="dark" onClick={this.props.toggleNav}>
+                    <span className="fa fa-bars"></span>
+                </Button>
+                <Link to="/admin/home" className="m-auto navbar-brand">
+                    <span>eMall</span>
+                    <FaShoppingCart className="ml-2" />
+                </Link>
+                <Button variant="dark" onClick={this.logout}>
+                    <span className="fa fa-sign-out fa-lg"></span>
+                </Button>
             </Navbar >
         );
     }

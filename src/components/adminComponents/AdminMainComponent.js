@@ -65,7 +65,7 @@ class AdminMain extends React.Component {
                     <SideNav on={this.state.on} links={links} />
                     <Switch>
                         <Route path="/admin/home" component={() => <AdminHome user={this.state.user} />} />
-                        <Route path="/admin/staff" component={() => <AdminStaff user={this.state.user} />} />
+                        <Route path="/admin/staff" component={() => <AdminStaff user={this.state.user} refresh={this.refresh} />} />
                         <Route path="/admin/mall" component={() => <AdminMall user={this.state.user} refresh={this.refresh} />} />
                         <Redirect to="/admin/home" />
                     </Switch>

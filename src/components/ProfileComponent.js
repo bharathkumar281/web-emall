@@ -2,14 +2,18 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 
 const Profile = (props) => {
-    const rows = props.fields.map(field => {
-        return (
-            <dl className="row" key={field.key}>
-                <dt className="col-4 col-md-5">{field.key}</dt>
-                <dt className="col-8 col-md-7">{field.val}</dt>
+
+    const rows = [];
+
+    Object.entries(props.fields).forEach(([key, val]) => {
+        rows.push(
+            <dl className="row" key={key}>
+                <dt className="col-4 col-md-5">{key}</dt>
+                <dt className="col-8 col-md-7">{val}</dt>
             </dl>
-        );
+        )
     });
+
     return (
         <Container fluid className="pt-5 pb-5">
             <h1>{props.title}</h1>
