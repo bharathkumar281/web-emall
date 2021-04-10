@@ -6,24 +6,14 @@ class StaffHome extends React.Component {
 
     render() {
 
-        const fields = [
-            {
-                key: 'Name',
-                val: this.props.user.username
-            },
-            {
-                key: 'Email',
-                val: this.props.user.email
-            },
-            {
-                key: 'Revenue',
-                val: this.props.user.revenue
-            },
-            {
-                key: 'No of bookings',
-                val: this.props.user.bookings.length
-            }
-        ];
+        const user = this.props.user;
+
+        const fields = {
+            'Name': user.username,
+            'Email': user.email,
+            'Revenue': user.revenue,
+            'No of bookings': user.bookings.length
+        };
 
         return (
             <>
