@@ -29,7 +29,6 @@ class Register extends Component {
                 email: elements.email.value,
                 password: elements.password.value
             }
-            console.log(user);
             AdminService.addAdmin(user)
                 .then(response => {
                     let msg = 'User Registered successfully !';

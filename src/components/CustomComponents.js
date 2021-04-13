@@ -1,5 +1,5 @@
 
-import { Button as Btn } from 'react-bootstrap';
+import { Button as Btn, Alert as Alrt } from 'react-bootstrap';
 import { colors } from '../constants/theme';
 
 export const Button = (props) => {
@@ -24,8 +24,21 @@ export const Button = (props) => {
     return (
         <Btn className={props.className} type={props.type} variant={props.variant}
             onClick={props.onClick} style={style}
-             disabled={props.disabled}>
+            disabled={props.disabled}>
             {props.children}
         </Btn>
+    );
+}
+
+export const Alert = (props) => {
+
+    if (!props.msg) return <></>;
+    else return (
+        <Alrt dismissible
+            onClose={props.onClose}
+            className="add-shadow-small"
+            style={{ background: colors.dark, color: colors.light }}>
+            {props.msg}
+        </Alrt>
     );
 }

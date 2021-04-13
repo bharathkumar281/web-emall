@@ -4,6 +4,7 @@ import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import SideNav from '../SideNavComponent';
 import StaffBooking from "./StaffBookingComponent";
 import StaffHome from "./StaffHomeComponent";
+import MallService from '../../services/managementServices/MallService';
 
 class StaffMain extends React.Component {
 
@@ -18,10 +19,21 @@ class StaffMain extends React.Component {
         }
         else this.state = { user: JSON.parse(userData), on: false };
         this.toggleNav = this.toggleNav.bind(this);
+        this.fetchMall = this.fetchMall.bind(this);
+        this.fetchMall();
     }
 
     toggleNav() {
         this.setState({ on: !this.state.on });
+    }
+
+    fetchMall() {
+        MallService.get(this.state.user.mallId)
+            .then(response => response.data)
+            .then(mall => {
+                if (mall !== '') this.setState({ mall: mall });
+            })
+            .catch(error => console.log(error));
     }
 
     render() {
@@ -44,8 +56,10 @@ class StaffMain extends React.Component {
                 <div className="wrapper d-flex">
                     <SideNav on={this.state.on} links={links} />
                     <Switch>
-                        <Route path="/staff/home" component={() => <StaffHome user={this.state.user} />} />
-                        <Route path="/staff/bookings" component={() => <StaffBooking user={this.state.user} />} />
+                        <Route path="/staff/home"
+                            component={() => <StaffHome user={this.state.user} />} />
+                        <Route path="/staff/bookings"
+                            component={() => <StaffBooking user={this.state.user} mall={this.state.mall} />} />
                         <Redirect to="/staff/home" />
                     </Switch>
                 </div>

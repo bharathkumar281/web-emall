@@ -6,7 +6,7 @@ const SideNav = (props) => {
     const links = props.links.map(link => {
         return (
             <li className="nav-item pl-4 pl-md-0" key={link.text}>
-                <Link to={link.path} className="nav-link" onClick={() => console.log(link.text)}>
+                <Link to={link.path} className="nav-link">
                     <span className={`mr-2 ${link.icon}`}></span>
                     <span>{link.text}</span>
                 </Link>

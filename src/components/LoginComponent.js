@@ -32,7 +32,6 @@ class Login extends React.Component {
                 .then(admin => {
                     if (admin === '') this.setState({ isLoading: false, errorMessage: 'Invalid credentials !' });
                     else {
-                        console.log(admin);
                         this.setState({ isLoading: false });
                         sessionStorage.setItem('admin', JSON.stringify(admin));
                         this.props.history.push('/admin');

@@ -29,11 +29,11 @@ class StaffData extends React.Component {
         let cols = ['#', 'Name', 'Email', 'Revenue', 'No of Bookings'];
         const renderHeader = cols.map((col, index) => {
             return (
-                <th key={index}>{col}</th>
+                <td key={index}>{col}</td>
             );
         });
 
-        const renderRows = () => {
+        const Rows = () => {
             if (!this.state.staff) {
                 return (
                     <tr>
@@ -44,7 +44,7 @@ class StaffData extends React.Component {
             else {
                 const rows = this.state.staff.map((staff, index) => {
                     return (
-                        <tr>
+                        <tr key={index}>
                             <td>{index + 1}</td>
                             <td>{staff.username}</td>
                             <td>{staff.email}</td>
@@ -73,7 +73,7 @@ class StaffData extends React.Component {
                                 {renderHeader}
                             </thead>
                             <tbody>
-                                {renderRows()}
+                                <Rows />
                             </tbody>
                         </Table>
                     </Col>

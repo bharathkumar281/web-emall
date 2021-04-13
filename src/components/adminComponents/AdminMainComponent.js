@@ -12,7 +12,6 @@ class AdminMain extends React.Component {
     constructor(props) {
         super(props);
         const userData = sessionStorage.getItem('admin');
-        console.log(userData);
         if (!userData) {
             this.state = { user: null };
             alert('please login 1st');
@@ -48,14 +47,14 @@ class AdminMain extends React.Component {
                 icon: 'fa fa-home'
             },
             {
-                text: 'Staff',
-                path: '/admin/staff',
-                icon: 'fa fa-users'
-            },
-            {
                 text: 'Mall',
                 path: '/admin/mall',
                 icon: 'fa fa-shopping-cart'
+            },
+            {
+                text: 'Staff',
+                path: '/admin/staff',
+                icon: 'fa fa-users'
             }
         ];
         return (

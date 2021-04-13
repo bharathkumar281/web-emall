@@ -1,17 +1,13 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-import BookingCalendar from "./CalendarComponent";
+import MallLayout from "./MallLayoutComponent";
 
 class StaffBooking extends React.Component {
 
     render() {
-
         return (
-            <Container fluid>
-                <h1 className="pt-5">Bookings</h1>
-                <hr />
-                <BookingCalendar />
-            </Container>
+            <div className="w-100 d-flex flex-column">
+                <MallLayout mall={this.props.mall} user={this.props.user} />
+            </div>
         );
     }
 }

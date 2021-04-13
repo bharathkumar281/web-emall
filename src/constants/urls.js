@@ -5,6 +5,6 @@ export const images = {
 }
 
 export const api = {
-    mgmturl: 'http://localhost:8083',
-    staffurl: 'http://localhost:8082'
+    mgmturl: window.location.origin.replace('3000', '8083'),
+    staffurl: window.location.origin.replace('3000', '8082')
 }
