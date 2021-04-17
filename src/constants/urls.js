@@ -5,6 +5,6 @@ export const images = {
 }
 
 export const api = {
-    mgmturl: window.location.origin.replace('3000', '8083'),
-    staffurl: window.location.origin.replace('3000', '8082')
+    mgmturl: 'http://192.168.0.6:8083',
+    staffurl: 'http://192.168.0.6:8082'
 }

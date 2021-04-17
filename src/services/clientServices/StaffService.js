@@ -25,6 +25,10 @@ class StaffService {
         return this.service.get('/from-mall?id=' + mallId);
     }
 
+    getStaff(id) {
+        return this.service.get('/get?id=' + id);
+    }
+
 }
 
 export default new StaffService();

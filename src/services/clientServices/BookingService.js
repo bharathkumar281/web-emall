@@ -5,7 +5,7 @@ class BookingService {
 
     constructor() {
         this.service = axios.create({
-            baseURL: api.staffurl + '/booking'
+            baseURL: api.staffurl + '/booking',
         })
     }
 
@@ -18,7 +18,11 @@ class BookingService {
     }
 
     deleteBooking(id) {
-        return this.service.delete('/delete?id=' + id)
+        return this.service.delete('/delete?id=' + id);
+    }
+
+    getBookingsFromMonthAndId(month, id) {
+        return this.service.get('/from-month-id?month=' + month + '&id=' + id);
     }
 }
 

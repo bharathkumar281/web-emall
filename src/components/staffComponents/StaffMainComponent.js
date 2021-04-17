@@ -5,6 +5,7 @@ import SideNav from '../SideNavComponent';
 import StaffBooking from "./StaffBookingComponent";
 import StaffHome from "./StaffHomeComponent";
 import MallService from '../../services/managementServices/MallService';
+import StaffService from '../../services/clientServices/StaffService';
 
 class StaffMain extends React.Component {
 
@@ -20,6 +21,7 @@ class StaffMain extends React.Component {
         else this.state = { user: JSON.parse(userData), on: false };
         this.toggleNav = this.toggleNav.bind(this);
         this.fetchMall = this.fetchMall.bind(this);
+        this.refresh = this.refresh.bind(this);
         this.fetchMall();
     }
 
@@ -32,6 +34,18 @@ class StaffMain extends React.Component {
             .then(response => response.data)
             .then(mall => {
                 if (mall !== '') this.setState({ mall: mall });
+            })
+            .catch(error => console.log(error));
+    }
+
+    refresh() {
+        StaffService.getStaff(this.state.user.staffId)
+            .then(response => response.data)
+            .then(staff => {
+                if (staff !== '') {
+                    this.setState({ user: staff });
+                    sessionStorage.setItem('user', JSON.stringify(staff));
+                }
             })
             .catch(error => console.log(error));
     }
@@ -59,7 +73,7 @@ class StaffMain extends React.Component {
                         <Route path="/staff/home"
                             component={() => <StaffHome user={this.state.user} />} />
                         <Route path="/staff/bookings"
-                            component={() => <StaffBooking user={this.state.user} mall={this.state.mall} />} />
+                            component={() => <StaffBooking user={this.state.user} mall={this.state.mall} refresh={this.refresh} />} />
                         <Redirect to="/staff/home" />
                     </Switch>
                 </div>

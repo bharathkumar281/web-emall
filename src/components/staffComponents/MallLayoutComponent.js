@@ -60,7 +60,8 @@ class MallLayout extends React.Component {
                             </div>
                         </Col>
                         <Col xs={12} md={10} xl={6} className="mt-5 mt-lg-0">
-                            <BookingCalendar mall={this.props.mall} space={this.state.selectedSpace} user={this.props.user} />
+                            <BookingCalendar mall={this.props.mall} space={this.state.selectedSpace}
+                                user={this.props.user} refresh={this.props.refresh} />
                         </Col>
                     </Row>
                 </Container>

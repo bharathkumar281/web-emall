@@ -23,7 +23,7 @@ class MyDate {
             month: 'numeric',
             day: '2-digit'
         }
-        return new Intl.DateTimeFormat('en-IN', dateFormat).format(d);
+        return new Intl.DateTimeFormat('en-IN', dateFormat).format(new Date(d));
     }
 
     iso(d) {
