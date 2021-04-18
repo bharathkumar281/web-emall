@@ -17,7 +17,7 @@ class StaffHome extends React.Component {
 
         return (
             <>
-                <Profile fields={fields} title="Staff Profile" img={images.profile} />
+                <Profile fields={fields} title="Staff Profile" img={images.profile} refresh={this.props.refresh} />
             </>
         );
     }

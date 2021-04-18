@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Container, Row, Table } from "react-bootstrap";
+import { Col, Container, Row, Table, Card } from "react-bootstrap";
 import { colors } from '../../constants/theme';
 import StaffService from '../../services/clientServices/StaffService';
 import { Button } from '../CustomComponents';
@@ -8,7 +8,7 @@ class StaffData extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {staff: null};
         this.fetchData = this.fetchData.bind(this);
     }
 
@@ -20,7 +20,9 @@ class StaffData extends React.Component {
         if (this.props.mallId) {
             StaffService.getStaffFromMallId(this.props.mallId)
                 .then(response => response.data)
-                .then(staff => this.setState({ staff: staff }))
+                .then(staff => {
+                    if(staff.length > 0) this.setState({staff: staff});
+                })
                 .catch(error => console.log(error));
         }
     }
@@ -68,14 +70,18 @@ class StaffData extends React.Component {
                 <hr />
                 <Row className="justify-content-center">
                     <Col xs={12} md={10} lg={8}>
-                        <Table responsive variant="dark" style={{ background: colors.dark }}>
-                            <thead>
-                                {renderHeader}
-                            </thead>
-                            <tbody>
-                                <Rows />
-                            </tbody>
-                        </Table>
+                        <Card className="add-shadow-small">
+                            <Card.Body className="p-0">
+                                <Table responsive className="m-0">
+                                    <thead style={{ background: colors.dark, color: colors.light }}>
+                                        {renderHeader}
+                                    </thead>
+                                    <tbody>
+                                        <Rows />
+                                    </tbody>
+                                </Table>
+                            </Card.Body>
+                        </Card>
                     </Col>
                 </Row>
             </Container>

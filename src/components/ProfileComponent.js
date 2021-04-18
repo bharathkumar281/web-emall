@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { Button } from "./CustomComponents";
 
 const Profile = (props) => {
 
@@ -16,7 +17,8 @@ const Profile = (props) => {
 
     return (
         <Container fluid className="pt-5 pb-5">
-            <h1>{props.title}</h1>
+            <h1>{props.title} <Button variant='dark'
+                onClick={props.refresh}><span className="fa fa-refresh"></span></Button></h1>
             <hr />
             <Row className="justify-content-center">
                 <Col xs={12} md={10} lg={8}>

@@ -57,7 +57,7 @@ class MallLayout extends React.Component {
 
         const floors = this.state.floors.map((floor, index) => {
             return (
-                <Card key={index} className="mt-2 add-shadow-small border-0">
+                <Card key={index} className="mt-3 add-shadow-small border-0">
                     <Card.Header style={{ background: colors.dark, color: colors.light }} >
                         {`${index === 0 ? "Ground Floor" : "Floor" + index} (Total Spaces: ${floor.spaces.length})`}
                     </Card.Header>

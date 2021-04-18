@@ -16,7 +16,7 @@ class AdminHome extends React.Component {
 
         return (
             <>
-                <Profile fields={fields} title="Admin Profile" img={images.profile} />
+                <Profile fields={fields} title="Admin Profile" img={images.profile} refresh={this.props.refresh} />
             </>
         );
     }

@@ -24,7 +24,7 @@ export const Button = (props) => {
     return (
         <Btn className={props.className} type={props.type} variant={props.variant}
             onClick={props.onClick} style={style}
-            disabled={props.disabled}>
+            disabled={props.disabled} size={props.size}>
             {props.children}
         </Btn>
     );

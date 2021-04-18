@@ -35,7 +35,7 @@ class MallLayout extends React.Component {
 
         const floors = this.props.mall.floors.map((floor, index) => {
             return (
-                <Card key={index} className="mb-2 add-shadow-small border-0">
+                <Card key={index} className="mb-3 add-shadow-small border-0">
                     <Card.Header style={{ background: colors.dark, color: colors.light }} >
                         {`${index === 0 ? "Ground Floor" : "Floor" + index} (Total Spaces: ${floor.spaces.length})`}
                     </Card.Header>
@@ -54,12 +54,12 @@ class MallLayout extends React.Component {
                     <h1 className="pt-5">Book Spaces</h1>
                     <hr />
                     <Row className="justify-content-center">
-                        <Col xs={12} md={10} xl={6}>
+                        <Col xs={12} md={10} lg={8}>
                             <div className="d-flex flex-column-reverse">
                                 {floors}
                             </div>
                         </Col>
-                        <Col xs={12} md={10} xl={6} className="mt-5 mt-lg-0">
+                        <Col xs={12} md={10} lg={8}>
                             <BookingCalendar mall={this.props.mall} space={this.state.selectedSpace}
                                 user={this.props.user} refresh={this.props.refresh} />
                         </Col>

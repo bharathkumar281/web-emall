@@ -20,7 +20,7 @@ class AdminMall extends React.Component {
             };
             return (
                 <div className="w-100 d-flex flex-column">
-                    <Profile fields={fields} title="Mall Info" img={images.mallProfile} />
+                    <Profile fields={fields} title="Mall Info" img={images.mallProfile} refresh={this.props.refresh}/>
                     <MallLayout mall={mall} refresh={this.props.refresh} />
                 </div>
             );
