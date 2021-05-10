@@ -1,5 +1,5 @@
 
-import { Button as Btn, Alert as Alrt } from 'react-bootstrap';
+import { Button as Btn, Alert as Alrt, Modal as Mdl } from 'react-bootstrap';
 import { colors } from '../constants/theme';
 
 export const Button = (props) => {
@@ -40,5 +40,22 @@ export const Alert = (props) => {
             style={{ background: colors.dark, color: colors.light }}>
             {props.msg}
         </Alrt>
+    );
+}
+
+export const Modal = (props) => {
+    return (
+        <Mdl show={props.show} onHide={props.close}>
+            <Mdl.Header closeButton style={{background: colors.dark, color: colors.light}}>
+                <Mdl.Title>{props.title}</Mdl.Title>
+            </Mdl.Header>
+            <Mdl.Body>
+                {props.msg}
+            </Mdl.Body>
+            <Mdl.Footer>
+                <Button variant="dark" onClick={props.action}>Yes</Button>
+                <Button variant="danger" onClick={props.close}>Cancel</Button>
+            </Mdl.Footer>
+        </Mdl>
     );
 }

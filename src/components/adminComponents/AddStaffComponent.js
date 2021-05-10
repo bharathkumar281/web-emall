@@ -42,7 +42,7 @@ class AddStaff extends React.Component {
     render() {
         return (
             <Container fluid>
-                <h1 className="pt-5">Add Staff</h1>
+                <h1 className="pt-5">Add</h1>
                 <hr />
                 <Row className="justify-content-center">
                     <Col xs={12} sm={10} md={8} lg={6}>

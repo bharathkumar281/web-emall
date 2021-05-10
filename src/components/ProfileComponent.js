@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Button } from "./CustomComponents";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Profile = (props) => {
 
@@ -15,10 +16,33 @@ const Profile = (props) => {
         )
     });
 
+    const Delbtn = () => {
+        if (!props.del) return <></>
+        return (
+            <Button variant="danger" onClick={props.del}
+                className="ml-2">
+                <FaTrashAlt />
+            </Button>
+        );
+    }
+
+    const Refbtn = () => {
+        if (!props.refresh) return <></>
+        return (
+            <Button variant='dark' className="ml-2"
+                onClick={props.refresh}>
+                <span className="fa fa-refresh"></span>
+            </Button>
+        );
+    }
+
     return (
-        <Container fluid className="pt-5 pb-5">
-            <h1>{props.title} <Button variant='dark'
-                onClick={props.refresh}><span className="fa fa-refresh"></span></Button></h1>
+        <Container fluid className="pt-5">
+            <h1>
+                {props.title}
+                <Refbtn />
+                <Delbtn />
+            </h1>
             <hr />
             <Row className="justify-content-center">
                 <Col xs={12} md={10} lg={8}>

@@ -22,24 +22,36 @@ class StaffBooking extends React.Component {
     render() {
 
         const TableHeader = () => {
-            return ['# booking ID', 'Seller', 'Space ID', 'Start date', 'End date', 'Revenue', 'Cancel Booking']
+            return ['# booking ID', 'Seller', 'Space ID','Date of Booking', 'Start date', 'End date', 'Revenue', 'Cancel Booking']
                 .map((col, index) => <th key={index}>{col}</th>);
         }
 
         const TableBody = () => {
-            let bookings = this.props.user.bookings;
+
+            const today = new Date();
+
+
+            let bookings = this.props.user.bookings.filter(booking => {
+                return MyDate.compare(booking.endDate, MyDate.iso(today)) > 0;
+            });
+
             if (bookings.length === 0) return <tr><td colSpan="6" className="text-center">No Data Available</td></tr>;
+
+            console.log(MyDate.groupBookingsbyMonth(bookings));
+            
             return bookings.map((booking, index) => {
+                let disabled = MyDate.compare(booking.startDate, today) <= 0;
                 return (
                     <tr key={index}>
                         <td>{booking.bookingId}</td>
                         <td>{booking.sellerName}</td>
                         <td>{booking.spaceId}</td>
+                        <td>{MyDate.format(booking.bookingDate)}</td>
                         <td>{MyDate.format(booking.startDate)}</td>
                         <td>{MyDate.format(booking.endDate)}</td>
                         <td>{booking.revenue}</td>
                         <td>
-                            <Button variant="danger" onClick={() => { this.deleteBooking(booking.bookingId) }}
+                            <Button disabled={disabled} variant="danger" onClick={() => { this.deleteBooking(booking.bookingId) }}
                                 size="sm">cancel</Button>
                         </td>
                     </tr>
@@ -51,7 +63,7 @@ class StaffBooking extends React.Component {
             <div className="w-100 d-flex flex-column">
                 <MallLayout mall={this.props.mall} user={this.props.user} refresh={this.props.refresh} />
                 <Container fluid>
-                    <h1 className="pt-5">Your Bookings <Button variant='dark'
+                    <h1 className="pt-5">Your Active Bookings <Button variant='dark'
                         onClick={this.props.refresh}><span className="fa fa-refresh"></span></Button></h1>
                     <hr />
                     <Row className="justify-content-center mb-5">

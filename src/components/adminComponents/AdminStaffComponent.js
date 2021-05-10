@@ -20,7 +20,7 @@ class AdminStaff extends React.Component {
             return (
                 <div className="w-100 d-flex flex-column">
                     <AddStaff mall={mall} />
-                    <StaffData mallId={mall.mallId} />
+                    <StaffData staff={this.props.staff} refresh={this.props.refresh} />
                 </div>
             );
         }

@@ -21,6 +21,11 @@ class MallService {
         return this.service.get('/get?id=' + mallId);
     }
 
+    delete(mallId) {
+        console.log(mallId);
+        return this.service.delete('/delete?id=' + mallId);
+    }
+
 }
 
 export default new MallService();

@@ -26,7 +26,7 @@ class StaffMain extends React.Component {
     }
 
     toggleNav() {
-        this.setState({ on: !this.state.on });
+        if (window.screen.width < 1100) this.setState({ on: !this.state.on });
     }
 
     fetchMall() {
@@ -71,7 +71,7 @@ class StaffMain extends React.Component {
                     <SideNav on={this.state.on} links={links} />
                     <Switch>
                         <Route path="/staff/home"
-                            component={() => <StaffHome user={this.state.user} refresh={this.refresh} />} />
+                            component={() => <StaffHome user={this.state.user} refresh={this.refresh} on={this.state.on} />} />
                         <Route path="/staff/bookings"
                             component={() => <StaffBooking user={this.state.user} mall={this.state.mall} refresh={this.refresh} />} />
                         <Redirect to="/staff/home" />

@@ -47,7 +47,8 @@ class BookingCalendar extends React.Component {
             sellerName: ele.seller.value,
             revenue: ele.revenue.value,
             startDate: MyDate.iso(this.state.startDate),
-            endDate: MyDate.iso(this.state.endDate)
+            endDate: MyDate.iso(this.state.endDate),
+            bookingDate: MyDate.iso(new Date(Date.now()))
         }
 
         BookingService.addBooking(booking, this.props.user.staffId)
@@ -114,10 +115,7 @@ class BookingCalendar extends React.Component {
 
                 const Months = () => {
 
-                    let months = ['January', 'February', 'March', 'April', 'May', 'June',
-                        'July', 'August', 'September', 'October', 'November', 'December'];
-
-                    let options = months.map((month, index) => {
+                    let options = MyDate.months.map((month, index) => {
                         return (<option key={index} value={index}>{month}</option>);
                     });
 
@@ -273,16 +271,16 @@ class BookingCalendar extends React.Component {
                             <FormControl type="hidden" name="spaceId" value={this.props.space} />
                         </Row>
                         <BookingInfo />
-                        <Row>
+                        <Row className="mt-2">
                             <Col>Revenue</Col>
                             <Col>Rs {revenue}</Col>
                             <FormControl type="hidden" name="revenue" value={revenue} />
                         </Row>
-                        <Form.Row className="mt-2">
+                        <Row className="mt-2">
                             <Col>Seller</Col>
                             <Col><FormControl placeholder="Seller Name" className="add-shadow-small"
                                 type="text" name="seller" required /></Col>
-                        </Form.Row>
+                        </Row>
 
                         <Button type="submit" variant="dark" className="mt-3 mb-3"
                             disabled={revenue === 0}>Book</Button>

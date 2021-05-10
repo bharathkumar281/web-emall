@@ -1,29 +1,19 @@
 import React from 'react';
 import { Col, Container, Row, Table, Card } from "react-bootstrap";
 import { colors } from '../../constants/theme';
-import StaffService from '../../services/clientServices/StaffService';
 import { Button } from '../CustomComponents';
 
 class StaffData extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {staff: null};
-        this.fetchData = this.fetchData.bind(this);
+        this.state = {staff: props.staff};
+        console.log(props.staff);
     }
 
-    componentDidMount() {
-        this.fetchData();
-    }
-
-    fetchData() {
-        if (this.props.mallId) {
-            StaffService.getStaffFromMallId(this.props.mallId)
-                .then(response => response.data)
-                .then(staff => {
-                    if(staff.length > 0) this.setState({staff: staff});
-                })
-                .catch(error => console.log(error));
+    componentDidUpdate(nextProps) {
+        if(JSON.stringify(this.props) !== JSON.stringify(nextProps.staff)) {
+            this.setState({staff: this.props.staff});
         }
     }
 
@@ -63,7 +53,7 @@ class StaffData extends React.Component {
             <Container fluid>
                 <h1 className="pt-5">
                     <span>Top Staff Members </span>
-                    <Button variant="dark" onClick={this.fetchData}>
+                    <Button variant="dark" onClick={this.props.refresh}>
                         <span className="fa fa-refresh"></span>
                     </Button>
                 </h1>
@@ -74,7 +64,7 @@ class StaffData extends React.Component {
                             <Card.Body className="p-0">
                                 <Table responsive className="m-0">
                                     <thead style={{ background: colors.dark, color: colors.light }}>
-                                        {renderHeader}
+                                        <tr>{renderHeader}</tr>
                                     </thead>
                                     <tbody>
                                         <Rows />

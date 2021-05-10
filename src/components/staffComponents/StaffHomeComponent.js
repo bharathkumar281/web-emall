@@ -5,7 +5,6 @@ import Profile from "../ProfileComponent";
 class StaffHome extends React.Component {
 
     render() {
-
         const user = this.props.user;
 
         const fields = {
@@ -16,9 +15,9 @@ class StaffHome extends React.Component {
         };
 
         return (
-            <>
+            <div className="w-100 d-flex flex-column mb-5 w-100">
                 <Profile fields={fields} title="Staff Profile" img={images.profile} refresh={this.props.refresh} />
-            </>
+            </div>
         );
     }
 }
