@@ -77,7 +77,7 @@ class Login extends React.Component {
                                 <Form.Group controlId="formEmail">
                                     <Form.Label>Email Address:</Form.Label>
                                     <Form.Control required
-                                        className="add-shadow-small"
+                                        className="border-0 shadow"
                                         name="email"
                                         type="email"
                                         placeholder="example@email.com"
@@ -88,7 +88,7 @@ class Login extends React.Component {
                                 <Form.Group controlId="formPassword">
                                     <Form.Label>Password:</Form.Label>
                                     <Form.Control required
-                                        className="add-shadow-small"
+                                        className="border-0 shadow"
                                         name="password"
                                         type="Password"
                                         placeholder="Password"
@@ -102,7 +102,7 @@ class Login extends React.Component {
                                         label="login as Administrator"
                                         name="isAdmin" />
                                 </Form.Group>
-                                <Button className="add-shadow-small mr-3"
+                                <Button className="shadow mr-3"
                                     type="submit" variant="dark">Login</Button>
                                 <Spinner className={this.state.isLoading ? '' : 'd-none'}
                                     animation="border" variant="primary" size="sm" />

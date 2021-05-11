@@ -46,7 +46,7 @@ const Profile = (props) => {
             <hr />
             <Row className="justify-content-center">
                 <Col xs={12} md={10} lg={8}>
-                    <Card className="add-shadow-small border-0">
+                    <Card className="shadow border-0">
                         <Card.Body>
                             <Row className="justify-content-center">
                                 <Col xs={5} md={3} className="align-self-center">

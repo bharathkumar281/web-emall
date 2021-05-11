@@ -44,17 +44,25 @@ export const Alert = (props) => {
 }
 
 export const Modal = (props) => {
+
+    const Success = () => {
+        if(! props.action) return <></>;
+        return (
+            <Button variant="dark" onClick={props.action}>{props.ok}</Button>
+        );
+    }
+
     return (
         <Mdl show={props.show} onHide={props.close}>
-            <Mdl.Header closeButton style={{background: colors.dark, color: colors.light}}>
+            <Mdl.Header closeButton style={{ background: colors.dark, color: colors.light }}>
                 <Mdl.Title>{props.title}</Mdl.Title>
             </Mdl.Header>
             <Mdl.Body>
                 {props.msg}
             </Mdl.Body>
             <Mdl.Footer>
-                <Button variant="dark" onClick={props.action}>Yes</Button>
-                <Button variant="danger" onClick={props.close}>Cancel</Button>
+                <Success />
+                <Button variant="danger" onClick={props.close}>{props.cancel}</Button>
             </Mdl.Footer>
         </Mdl>
     );

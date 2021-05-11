@@ -26,7 +26,7 @@ class StaffMain extends React.Component {
     }
 
     toggleNav() {
-        if (window.screen.width < 1100) this.setState({ on: !this.state.on });
+        this.setState({ on: !this.state.on });
     }
 
     fetchMall() {

@@ -50,27 +50,27 @@ class AddMall extends React.Component {
                 <hr />
                 <Row className="justify-content-center">
                     <Col xs={12} sm={10} md={8} lg={6}>
-                        <Alert dismissible className={`add-shadow-small text-white ${this.state.alertMsg ? '' : 'd-none'}`}
+                        <Alert dismissible className={`shadow border-0 text-white ${this.state.alertMsg ? '' : 'd-none'}`}
                             style={{ background: colors.dark }} onClose={() => { this.setState({ alertMsg: null }) }} >
                             {this.state.alertMsg}
                         </Alert>
                         <Form onSubmit={(event) => { this.addMall(event) }}>
                             <Form.Group>
                                 <Form.Label>Mall name:</Form.Label>
-                                <Form.Control name="name" required className="add-shadow-small" placeholder="name of the mall"
+                                <Form.Control name="name" required className="shadow border-0" placeholder="name of the mall"
                                     type="text" minLength="3" maxLength="20" />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Mall branch:</Form.Label>
-                                <Form.Control name="branch" required className="add-shadow-small" placeholder="branch of the mall"
+                                <Form.Control name="branch" required className="shadow border-0" placeholder="branch of the mall"
                                     type="text" minLength="3" maxLength="20" />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Cost per Space (in rs):</Form.Label>
-                                <Form.Control name="spacecost" required className="add-shadow-small"
+                                <Form.Control name="spacecost" required className="shadow border-0"
                                     type="number" min={100} max={5000} placeholder="cost per day" />
                             </Form.Group>
-                            <Button type="submit" className="add-shadow-small mr-3"
+                            <Button type="submit" className="shadow mr-3"
                                 variant="dark">Add</Button>
                             <Spinner className={this.state.isLoading ? '' : 'd-none'}
                                 animation="border" variant="primary" size="sm" />

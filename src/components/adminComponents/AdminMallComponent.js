@@ -42,7 +42,8 @@ class AdminMall extends React.Component {
             return (
                 <div className="w-100 d-flex flex-column">
                     <Modal title="Confirm" show={this.state.show} msg="Are you sure ? this will delete entire mall and staff data"
-                        close={() => { this.setState({ show: false }) }} action={this.deleteMall} />
+                        close={() => { this.setState({ show: false }) }} action={this.deleteMall}
+                        ok="yes" cancel="cancel" />
                     <Profile fields={fields} title="Mall Info" img={images.mallProfile} del={() => { this.setState({ show: true }) }}
                         refresh={this.props.refresh} />
                     <MallLayout mall={mall} refresh={this.props.refresh} />

@@ -51,7 +51,8 @@ class StaffBooking extends React.Component {
                         <td>{MyDate.format(booking.endDate)}</td>
                         <td>{booking.revenue}</td>
                         <td>
-                            <Button disabled={disabled} variant="danger" onClick={() => { this.deleteBooking(booking.bookingId) }}
+                            <Button disabled={disabled} variant="danger" className="shadow"
+                            onClick={() => { this.deleteBooking(booking.bookingId) }}
                                 size="sm">cancel</Button>
                         </td>
                     </tr>
@@ -68,7 +69,7 @@ class StaffBooking extends React.Component {
                     <hr />
                     <Row className="justify-content-center mb-5">
                         <Col xs={12} md={10} lg={8}>
-                            <Card className="add-shadow-small">
+                            <Card className="shadow border-0">
                                 <Card.Body className="p-0">
                                     <Table responsive className="m-0">
                                         <thead style={{ background: colors.dark, color: colors.light }}><tr><TableHeader /></tr></thead>

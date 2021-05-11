@@ -278,7 +278,7 @@ class BookingCalendar extends React.Component {
                         </Row>
                         <Row className="mt-2">
                             <Col>Seller</Col>
-                            <Col><FormControl placeholder="Seller Name" className="add-shadow-small"
+                            <Col><FormControl placeholder="Seller Name"
                                 type="text" name="seller" required /></Col>
                         </Row>
 
@@ -290,7 +290,7 @@ class BookingCalendar extends React.Component {
             };
 
             return (
-                <Card className="add-shadow-small border-0">
+                <Card className="shadow border-0">
                     <RenderHeader />
                     <Card.Body>
                         <RenderTable />

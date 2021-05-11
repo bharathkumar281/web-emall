@@ -57,7 +57,7 @@ class Register extends Component {
                                 <Form.Group controlId="formUsername">
                                     <Form.Label>Username:</Form.Label>
                                     <Form.Control required
-                                        className="add-shadow-small"
+                                        className="border-0 shadow"
                                         name="username"
                                         type="text"
                                         placeholder="Username"
@@ -68,7 +68,7 @@ class Register extends Component {
                                 <Form.Group controlId="formEmail">
                                     <Form.Label>Email Address:</Form.Label>
                                     <Form.Control required
-                                        className="add-shadow-small"
+                                        className="border-0 shadow"
                                         name="email"
                                         type="email"
                                         placeholder="example@email.com"
@@ -79,7 +79,7 @@ class Register extends Component {
                                 <Form.Group controlId="formPassword">
                                     <Form.Label>Password:</Form.Label>
                                     <Form.Control required
-                                        className="add-shadow-small"
+                                        className="border-0 shadow"
                                         name="password"
                                         type="Password"
                                         placeholder="Password"
@@ -90,14 +90,14 @@ class Register extends Component {
                                 <Form.Group controlId="conPassword">
                                     <Form.Label>Confirm Password:</Form.Label>
                                     <Form.Control required
-                                        className="add-shadow-small"
+                                        className="border-0 shadow"
                                         name="cpassword"
                                         type="Password"
                                         placeholder="Password"
                                         minLength="4"
                                         maxLength="12" />
                                 </Form.Group>
-                                <Button type="submit" className="add-shadow-small mr-3" variant="dark">Register</Button>
+                                <Button type="submit" className="shadow mr-3" variant="dark">Register</Button>
                                 <Spinner className={this.state.isLoading ? '' : 'd-none'} animation="border" variant="primary" size="sm" />
                             </Form>
                         </Col>

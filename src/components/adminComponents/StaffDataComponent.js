@@ -60,7 +60,7 @@ class StaffData extends React.Component {
                 <hr />
                 <Row className="justify-content-center">
                     <Col xs={12} md={10} lg={8}>
-                        <Card className="add-shadow-small">
+                        <Card className="border-0 shadow">
                             <Card.Body className="p-0">
                                 <Table responsive className="m-0">
                                     <thead style={{ background: colors.dark, color: colors.light }}>

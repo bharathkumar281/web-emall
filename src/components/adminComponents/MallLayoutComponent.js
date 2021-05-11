@@ -57,7 +57,7 @@ class MallLayout extends React.Component {
 
         const floors = this.state.floors.map((floor, index) => {
             return (
-                <Card key={index} className="mt-3 add-shadow-small border-0">
+                <Card key={index} className="mt-3 border-0 shadow">
                     <Card.Header style={{ background: colors.dark, color: colors.light }} >
                         {`${index === 0 ? "Ground Floor" : "Floor" + index} (Total Spaces: ${floor.spaces.length})`}
                     </Card.Header>
@@ -89,7 +89,7 @@ class MallLayout extends React.Component {
                 <Row>
                     <Col className="pt-3 offset-md-1 offset-lg-2">
                         <Button variant="dark"
-                            className={`add-shadow-small ${this.state.floors.length < 10 ? '' : 'd-none'}`}
+                            className={`shadow ${this.state.floors.length < 10 ? '' : 'd-none'}`}
                             onClick={() => { this.addFloor(this.props.mall.mallId) }}>
                             <span className="fa fa-plus mr-2"></span>
                             <span>Add Floor</span>

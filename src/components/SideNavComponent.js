@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { colors } from "../constants/theme";
 import '../css/SideNav.css';
 
 const SideNav = (props) => {
@@ -14,7 +15,7 @@ const SideNav = (props) => {
         );
     });
     return (
-        <nav className={`SideNav navbar-dark sidebar ${props.on ? "on" : ""} bg-blue text-white`}>
+        <nav className={`SideNav navbar-dark sidebar ${props.on ? "on" : ""} text-white`} style={{background: colors.dark}}>
             <div className="container-fluid pt-5">
                 <ul className="navbar-nav">
                     {links}
