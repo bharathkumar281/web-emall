@@ -1,19 +1,24 @@
+
+const location = '/assets/images/';
+
 export const images = {
-    mall: '/assets/images/mall.jpg',
-    profile: '/assets/images/profile.svg',
-    mallProfile: '/assets/images/atrium-west.jpg',
-    shoppingGirl: '/assets/images/shopping-girl.svg',
-    booking: '/assets/images/booking.svg',
-    smallShop: '/assets/images/shop-small.jpg',
-    shopping: '/assets/images/shopping.jpg',
-    blank: '/assets/images/empty.svg',
-    layout: '/assets/images/layout.svg',
-    dashboard: '/assets/images/dashboard.svg',
-    manageusers: '/assets/images/manageusers.svg',
-    cancel: '/assets/images/cancel.svg'
+    mall: location + 'mall.jpg',
+    profile: location + 'profile.svg',
+    mallProfile: location + 'atrium-west.jpg',
+    shoppingGirl: location + 'shopping-girl.svg',
+    booking: location + 'booking.svg',
+    smallShop: location + 'shop-small.jpg',
+    shopping: location + 'shopping.jpg',
+    blank: location + 'empty.svg',
+    layout: location + 'layout.svg',
+    dashboard: location + 'dashboard.svg',
+    manageusers: location + 'manageusers.svg',
+    cancel: location + 'cancel.svg'
 }
 
+const host = 'http://192.168.8.101:';
+
 export const api = {
-    mgmturl: 'http://192.168.0.6:8083',
-    staffurl: 'http://192.168.0.6:8082'
+    mgmturl: host + '8083',
+    staffurl: host +'8082'
 }

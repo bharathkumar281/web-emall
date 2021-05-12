@@ -50,7 +50,7 @@ class StaffData extends React.Component {
         }
 
         return (
-            <Container fluid>
+            <Container fluid className="mb-5">
                 <h1 className="pt-5">
                     <span>Top Staff Members </span>
                     <Button variant="dark" onClick={this.props.refresh}>

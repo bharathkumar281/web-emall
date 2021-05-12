@@ -31,8 +31,8 @@ class Register extends Component {
             }
             AdminService.addAdmin(user)
                 .then(response => {
-                    let msg = 'User Registered successfully !';
-                    if (response.data === '') {
+                    let msg = response.data;
+                    if (msg === '') {
                         msg = 'User already registered !';
                     }
                     this.setState({ errorMessage: msg, isLoading: false });
