@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Varela';
+  font-family: 'Spartan', 'Century gothic';
 }
 
 .wrapper {
@@ -16,4 +16,9 @@
 
 .Main {
   min-height: 100vh;
+}
+
+.link,
+.link:hover {
+  color: white;
 }

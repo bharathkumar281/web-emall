@@ -34,13 +34,20 @@ class StaffData extends React.Component {
                 );
             }
             else {
+                let revenue = 0;
+                this.state.staff.forEach(staff => {
+                    staff.bookings.forEach(booking => {
+                        revenue += booking.revenue;
+                    })
+                });
+
                 const rows = this.state.staff.map((staff, index) => {
                     return (
                         <tr key={index}>
                             <td>{index + 1}</td>
                             <td>{staff.username}</td>
                             <td>{staff.email}</td>
-                            <td>{staff.revenue}</td>
+                            <td>{revenue}</td>
                             <td>{staff.bookings.length}</td>
                         </tr>
                     );

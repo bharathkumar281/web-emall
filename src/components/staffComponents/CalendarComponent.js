@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Row, Col, FormControl, Form, Table, Spinner } from 'react-bootstrap';
 import { colors } from '../../constants/theme';
-import { Alert, Button } from '../CustomComponents';
+import { Button, Modal } from '../CustomComponents';
 import MyDate from "../../utils/DateUtils";
 import BookingService from "../../services/clientServices/BookingService";
 
@@ -15,7 +15,8 @@ class BookingCalendar extends React.Component {
             selectedYear: MyDate.currentYear(),
             selectedMonth: MyDate.currentMonth(),
             booked: [],
-            isLoading: true
+            isLoading: true,
+            show: false
         };
 
         this.getBookingsFromMonth = this.getBookingsFromMonth.bind(this);
@@ -41,6 +42,7 @@ class BookingCalendar extends React.Component {
 
     addBooking(e) {
         e.preventDefault();
+        this.setState({ isLoading: true });
         let ele = e.target.elements;
         const booking = {
             spaceId: ele.spaceId.value,
@@ -54,10 +56,12 @@ class BookingCalendar extends React.Component {
         BookingService.addBooking(booking, this.props.user.staffId)
             .then(response => response.data)
             .then(result => {
-                let msg = result === '' ? 'Error' : 'Success';
-                this.setState({ msg: msg, isLoading: true }, this.getBookingsFromMonth);
+                let msg = result === '' ? 'Error' : 'Booking successful with booking ID: #' + result.bookingId;
+                this.setState({ show: true, msg: msg, isLoading: false }, this.getBookingsFromMonth);
             })
-            .catch(error => this.setState({ msg: error.message }));
+            .catch(error => {
+                this.setState({ show: true, msg: error.message, isLoading: false }, this.getBookingsFromMonth);
+            });
     }
 
     getBookingsFromMonth() {
@@ -284,7 +288,8 @@ class BookingCalendar extends React.Component {
 
                         <Button type="submit" variant="dark" className="mt-3 mb-3"
                             disabled={revenue === 0}>Book</Button>
-                        <Alert msg={this.state.msg} onClose={() => this.setState({ msg: null })} />
+                        <Modal show={this.state.show} title="Info" cancel="ok"
+                            msg={this.state.msg} close={() => { this.setState({ show: false }) }} />
                     </Form>
                 );
             };

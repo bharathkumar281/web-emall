@@ -11,11 +11,11 @@ const Home = (props) => {
 
     const Feature = (props) => {
         return (
-            <Card className="shadow border-0 p-3 h-100" style={{borderRadius: '20px'}}>
-                <Card.Img variant="top" src={props.image} className="p-5" />
+            <Card className="shadow border-0 p-3 h-100" style={{ borderRadius: '20px' }}>
+                <Card.Img variant="top" src={props.image} className={`p-5 ${props.circle ? 'rounded-circle' : ''}`} roundedCircle={props.roundedCircle} />
                 <Card.Body>
                     <h3>{props.title}</h3>
-                    <p>{props.text}</p>
+                    <h6>{props.text}</h6>
                 </Card.Body>
             </Card>
         );
@@ -23,16 +23,16 @@ const Home = (props) => {
 
     const Head = ({ textColor, btnColor, display }) => {
         return (
-            <Container className={`${textColor} text-right pt-5 pb-5 mt-5 mb-5 ${display}`}>
+            <Container className={`${textColor} text-lg-right pt-lg-5 pb-lg-5 mt-lg-5 mb-lg-5 ${display}`}>
                 <h3 className="display-1">eMall</h3>
-                <p className="lead">Manage spaces easily and effectively !</p>
-                <div className="row justify-content-end pt-3">
-                    <div className="col-auto">
+                <p className="lead mb-lg-5">Manage spaces easily and effectively !</p>
+                <div className="row justify-content-lg-end pb-lg-5 mb-lg-5">
+                    <div className="col-auto mb-lg-5 pb-lg-5">
                         <Link to="/login">
                             <div className={`btn btn-lg ${btnColor} btn-rounded`} >Sign In</div>
                         </Link>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-auto mb-lg-5 pb-lg-5">
                         <Link to="/register">
                             <div className={`btn btn-lg ${btnColor} btn-rounded`} >Sign Up</div>
                         </Link>
@@ -42,14 +42,16 @@ const Home = (props) => {
         );
     }
 
+    const backgroundImage = {
+        backgroundImage: `url(${images.shopping})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundAttachment: 'fixed'
+    };
+
     return (
         <>
-            <Jumbotron className="bg-warning" fluid style={
-                {
-                    background: `url(${images.shopping}) no-repeat`,
-                    backgroundSize: 'cover',
-                    backgroundAttachment: 'fixed'
-                }}>
+            <Jumbotron className="bg-warning" fluid style={backgroundImage}>
                 <Head display="d-none d-lg-block" btnColor="btn-outline-dark" />
                 <Head display="d-lg-none" textColor="text-light" btnColor="btn-outline-light" />
             </Jumbotron>
@@ -64,11 +66,7 @@ const Home = (props) => {
                     </Col>
                 </Row>
             </Container>
-            <div className="w-100 bg-warning mt-5" style={{
-                background: `url(${images.shopping}) no-repeat`,
-                backgroundSize: 'cover',
-                backgroundAttachment: 'fixed'
-            }}>
+            <div className="w-100 bg-warning mt-5 pb-5" style={backgroundImage} >
                 <Container className="pt-5 text-center" >
                     <h1 className="mb-5 display-3 text-dark d-none d-lg-block">Our Features</h1>
                     <h1 className="mb-5 display-3 text-white d-lg-none">Our Features</h1>
@@ -90,7 +88,7 @@ const Home = (props) => {
                     </div>
                     <h1 className="mt-5 pt-5 mb-5 d-none d-lg-block">Mall Staff Members</h1>
                     <h1 className="mt-5 pt-5 mb-5 text-white d-lg-none">Mall Staff Members</h1>
-                    <div className="row justify-content-center align-items-stretch pb-5">
+                    <div className="row justify-content-center align-items-stretch pb-5 mb-5">
                         <Col xs={12} md={5} lg={4}>
                             <Feature title="Dashboard view" text="Analyse Booking stats on monthly basis"
                                 image={images.dashboard} />
@@ -104,10 +102,24 @@ const Home = (props) => {
                                 image={images.cancel} />
                         </Col>
                     </div>
+                    <h1 className="mb-5 display-3 text-dark d-none d-lg-block">Meet the Creators</h1>
+                    <h1 className="mb-5 display-3 text-white d-lg-none">Meet the Creators</h1>
+                    <div className="row justify-content-center align-items-stretch pb-5">
+                        <Col xs={12} md={5} lg={4}>
+                            <Feature title="Bharath Kumar Munagari" text="Intern at Commvault"
+                                image={images.bharath} circle />
+                        </Col>
+                        <Col xs={12} md={5} lg={4} className="mt-5 mt-md-0">
+                            <Feature title="Ashish Sunny Abraham" text="Intern at Thomson Reuters"
+                                image={images.ashish} circle />
+                        </Col>
+                        <Col xs={12} md={6} lg={4} className="mt-5 mt-lg-0">
+                            <Feature title="Mohammed Abuzar Hussain" text="Intern at Open Text"
+                                image={images.abuzar} circle />
+                        </Col>
+                    </div>
                 </Container>
-
             </div>
-
             <Footer />
         </>
     );

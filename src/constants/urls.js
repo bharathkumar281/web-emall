@@ -13,10 +13,13 @@ export const images = {
     layout: location + 'layout.svg',
     dashboard: location + 'dashboard.svg',
     manageusers: location + 'manageusers.svg',
-    cancel: location + 'cancel.svg'
+    cancel: location + 'cancel.svg',
+    ashish: location + 'ashish.jpg',
+    abuzar: location + 'abuzar.jpg',
+    bharath: location + 'bharath.jpg'
 }
 
-const host = 'http://192.168.8.101:';
+const host = 'http://192.168.0.5:';
 
 export const api = {
     mgmturl: host + '8083',

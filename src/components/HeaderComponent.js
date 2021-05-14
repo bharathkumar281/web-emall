@@ -1,6 +1,7 @@
 import React from 'react';
 import { images } from '../constants/urls';
 import { Link } from 'react-router-dom';
+import { Jumbotron } from 'react-bootstrap';
 
 const Header = (props) => {
 
@@ -20,19 +21,19 @@ const Header = (props) => {
     if (props.register) buttons.push(<LinkButton key="3" link="/register" text="Sign up" />)
 
     return (
-        <div className="jumbotron jumbotron-fluid header pb-5 pt-5 bg-dark" style={
+        <Jumbotron fluid className="header bg-dark pt-3 pb-3" style={
             {
                 background: `url(${images.mall}) no-repeat`,
                 backgroundSize: 'cover'
             }}>
             <div className="container text-light">
-                <h3 className="display-2">{props.title}</h3>
+                <h3 className="display-3">{props.title}</h3>
                 <p className="lead">{props.subtitle}</p>
                 <div className="row d-flex justify-content-left pt-3">
                     {buttons}
                 </div>
             </div>
-        </div>
+        </Jumbotron>
     );
 }
 

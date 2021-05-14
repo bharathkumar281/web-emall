@@ -10,9 +10,7 @@ class StaffHome extends React.Component {
 
         const fields = {
             'Name': user.username,
-            'Email': user.email,
-            'Revenue': user.revenue,
-            'No of bookings': user.bookings.length
+            'Email': user.email
         };
 
         return (
