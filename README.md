@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+eMall is a responsive web Application used to manage infrastructure spaces of a mall. Users can book spaces, create virtual mall layout, view booking and revenue stats.
+
+The backend Sprint boot projects for this Application are: [eMall Staff](https://github.com/bharathkumar281/client-emall) and [eMall Admin](https://github.com/bharathkumar281/management-emall).
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
